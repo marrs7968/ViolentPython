@@ -6,7 +6,7 @@ def testPass(cryptPass):
     dictFile = open('dictionary.txt', 'r')
     for word in dictFile.readlines():
         word = word.strip('\n')
-        cryptWord = des_crypt.using(salt).hash(word)
+        cryptWord = des_crypt.using(salt=salt).hash(word)
         if (cryptWord == cryptPass):
             print(f"[+] Found Password: {word}\n")
             return
@@ -24,3 +24,19 @@ def main():
 
 if __name__ == "__main__":
     main()
+
+'''
+Current output:
+[*] Cracking Password For: alice
+
+[+] Found Password: password
+
+[*] Cracking Password For: bob
+
+[-] Password Not Found.
+
+[*] Cracking Password For: carol
+
+...ctrl+c...
+
+'''
